@@ -32,7 +32,9 @@ public class LoginController {
         if (authenticationService.authenticate(name, password)) {
             modelMap.put("name", name);
             model.addAttribute("name", name);
+            return "welcome";
         }
-        return "welcome";
+        model.addAttribute("errorMessage", "Invalid credentials");
+        return "login";
     }
 }

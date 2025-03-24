@@ -3,10 +3,14 @@ package com.learning.springboot.my_first_web_app.service;
 import com.learning.springboot.my_first_web_app.model.Todo;
 
 import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.util.Iterator;
 
+@Service
 public class TodoService {
 
     private static List<Todo> todos = new ArrayList<>();
@@ -26,7 +30,7 @@ public class TodoService {
     }
     
     // Get todos by username
-    public static List<Todo> findByUsername(String username) {
+    public List<Todo> findByUsername(String username) {
         List<Todo> userTodos = new ArrayList<>();
         for (Todo todo : todos) {
             if (todo.getUsername().equals(username)) {
@@ -36,7 +40,7 @@ public class TodoService {
         return userTodos;
     }
     
-    public static boolean deleteById(int id) {
+    public boolean deleteById(int id) {
         Iterator<Todo> iterator = todos.iterator();
         while (iterator.hasNext()) {
             Todo todo = iterator.next();
